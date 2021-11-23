@@ -1,0 +1,20 @@
+.titleTable{
+  font-weight: 800;
+  color: #310a90;
+  margin-top: 20px;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 90px;
+}
+.sub{
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 90px;
+}
+img{
+  margin: 80px auto;
+  width: 95%;
+  height: 350px;;
+}

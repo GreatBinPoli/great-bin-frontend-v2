@@ -1,0 +1,139 @@
+.titleTable {
+  font-weight: 800;
+  color: #310a90;
+  margin-bottom: 20px;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.input-group {
+  margin-left: 60px;
+  width: 30%;
+}
+.input-group.rango{
+  width: 40%;
+}
+.form-control.si {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid white;
+  border-left: none;
+  padding: 10px;
+  height: 45px;
+  font-size: 18px;
+}
+.input-group-text {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 3px solid white;
+  border-right: none;
+}
+.tableFull {
+  height: 70vh;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid #fff;
+  border-radius: 5px;
+  overflow: auto;
+  overflow-x: auto;
+  margin-bottom: 100px;
+}
+
+.tableFull table {
+  width: min-content;
+  margin: 0 auto;
+}
+.titles_table {
+  color: #310a90;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+.scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.scroll::-webkit-scrollbar:vertical {
+  width: 12px;
+}
+
+.scroll::-webkit-scrollbar-button:increment,
+.scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+.scroll::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #b0aeb4;
+  border-radius: 15px;
+  border: 2px solid #f1f2f3;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.buscarAutos {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 120px;
+  margin-bottom: 200px;
+}
+.buscarAutos .r {
+  order: 1;
+}
+.r .card {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.card-body div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.card-body div label {
+  display: block;
+  width: 100%;
+}
+.tituloDeAutos {
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #310a90;
+  margin-bottom: 20px;
+}
+
+.listContainer {
+  height: 400px;
+  overflow: auto;
+  width: 100%;
+  background-color: white;
+}
+
+.list-group-item div {
+  text-transform: capitalize;
+}
+
+.form-group label {
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #654ea0;
+}
+.contenfiltro {
+  width: 750px;
+  display: flex;
+  justify-content: end;
+}
+.btn_buscar{
+  background-color: #310a90;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: 5px;
+}
+.contenfiltro .input-group {
+  margin: 0;
+}

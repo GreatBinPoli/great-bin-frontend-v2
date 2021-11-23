@@ -1,0 +1,50 @@
+.titleAgregar {
+  font-weight: 800;
+  color: #310a90;
+  margin-bottom: 20px;
+}
+.title-dos {
+  font-weight: 800;
+  color: #310a90;
+  margin-bottom: 300px;
+}
+.form-row {
+  margin: 25px 20px !important;
+}
+.form-control {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid white;
+  padding: 10px;
+  height: 45px;
+  font-size: 18px;
+}
+
+::placeholder {
+  color: #797979;
+  font-weight: 400;
+}
+.titleForm {
+  color: white;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 400;
+}
+.titleForm:hover {
+  color: #310a90;
+}
+
+.btn_add {
+  background-color: #310a90;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.btn_add-s {
+  background: unset;
+  border: 2px solid #310a90;
+  color: #310a90;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
