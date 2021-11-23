@@ -1,0 +1,39 @@
+<div class="container-login">
+  <form class="container-form">
+    <div class="alert alert-warning" *ngIf="invalidLogin">
+      {{ errorMessage }}
+    </div>
+    <div class="alert alert-success" *ngIf="loginSuccess">
+      {{ successMessage }}
+    </div>
+    <div class="">
+      <label class="label-inputs" for="username">Email :</label>
+      <input
+        type="text"
+        class="form-control inputs"
+        id="username"
+        [(ngModel)]="username"
+        placeholder="lucas@ejemplo.com"
+        name="username"
+      />
+    </div>
+    <div class="">
+      <label class="label-inputs" for="password">Contraseña:</label>
+      <input
+        type="password"
+        class="form-control inputs"
+        [(ngModel)]="password"
+        id="password"
+        placeholder="*********"
+        name="password"
+      />
+    </div>
+    <button (click)="handleLogin()" class="btn btn_primary text_btn">
+      Login
+    </button>
+  </form>
+  <span class="text">¿Aún no tienes cuenta?</span>
+  <button class="btn btn_secondary text_btn" routerLink="../addUser">
+    Registrate
+  </button>
+</div>

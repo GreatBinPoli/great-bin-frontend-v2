@@ -1,0 +1,60 @@
+<div >
+  <div class="cabecera">
+    <h3 class="titleTable">LISTA DE USUARIOS</h3>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <img
+            src="https://www.pinclipart.com/picdir/big/370-3705571_dibujo-lupa-png-como-dibujar-una-lupa-clipart.png"
+            width="20"
+          />
+        </div>
+      </div>
+      <input
+        class="form-control si"
+        type="text"
+        name="searchTerm"
+        placeholder="Nombre ...."
+      />
+    </div>
+  </div>
+  <div class="tableFull scroll">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="titles_table">Documento</th>
+          <th class="titles_table">Nombre</th>
+          <th class="titles_table">Apellido</th>
+          <th class="titles_table">Email</th>
+          <!-- <th class="titles_table">Roles</th> -->
+          <th class="titles_table">Celular</th>
+          <th class="titles_table">Dirección</th>
+          <th class="titles_table">Localidad</th>
+          <th class="titles_table">Basura</th>
+          <th class="titles_table">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userSet">
+          <td>{{ item.document_id }}</td>
+          <td>{{ item.first_name }}</td>
+          <td>{{ item.last_name }}</td>
+          <td>{{ item.email }}</td>
+          <!-- <td>{{ item.roles }}</td> -->
+          <td>{{ item.phone_number }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.neighbourhood }}</td>
+          <td>{{ item.bags }}</td>
+          <td>
+            <button class="btn btn-sm" (click)="deleteUser(item.document_id)">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1017/1017530.png"
+                width="25"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
