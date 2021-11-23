@@ -1,0 +1,133 @@
+<form #myForm="ngForm">
+  <h3 class="titleAgregar">EDITAR PERFIL</h3>
+  <div class="submit-form">
+    <div *ngIf="submitted">
+      <div class="form-row">
+        <div class="col">
+          <label class="titleForm" for="name">Documento</label>
+          <input
+            type="number"
+            class="form-control"
+            id="marca"
+            placeholder="0000000000000000"
+            required
+            [(ngModel)]="currentUser.document_id"
+            name="marca"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="wiki">Tipo Documento</label>
+          <select
+            class="form-control"
+            name="select"
+            [(ngModel)]="currentUser.document_type"
+          >
+            <option value="1">CC</option>
+            <option value="2">TI</option>
+          </select>
+        </div>
+        <div class="col">
+          <label class="titleForm" for="rda">Direccion</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="calle 1 "
+            id="modelo"
+            required
+            [(ngModel)]="currentUser.address"
+            name="rda"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label class="titleForm" for="required">Correo</label>
+
+          <input
+            type="email"
+            placeholder="lucas@ejemplo.com"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="currentUser.email"
+            name="required"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="type">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="modelo"
+            placeholder="Cristian"
+            required
+            [(ngModel)]="currentUser.first_name"
+            name="type"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="tui">Apellido</label>
+          <input
+            type="text"
+            placeholder="Sanchez"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="currentUser.last_name"
+            name="tui"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label class="titleForm" for="tui">Localidad</label>
+          <input
+            type="text"
+            placeholder="Santafe"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="currentUser.neighbourhood"
+            name="tui"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="tui">Contraseña</label>
+          <input
+            type="password"
+            placeholder="***************"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="currentUser.password"
+            name="tui"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="tui">Celular</label>
+          <input
+            type="text"
+            placeholder="123456890"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="currentUser.phone_number"
+            name="tui"
+          />
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <button
+      (click)="updateUser()"
+      [disabled]="!myForm.form.valid"
+      class="btn btn_add"
+    >
+      ACTUALIZAR
+    </button>
+  </div>
+
+  {{ msgError }}
+</form>

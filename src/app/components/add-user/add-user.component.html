@@ -1,0 +1,138 @@
+<form #myForm="ngForm" class="container_form">
+  <h3 class="titleAgregar">Registro</h3>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-row">
+        <div class="col">
+          <label class="titleForm" for="name">Documento</label>
+          <input
+            type="number"
+            class="form-control"
+            id="marca"
+            placeholder="0000000000000000"
+            required
+            [(ngModel)]="user.document_id"
+            name="marca"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="wiki">Tipo Documento</label>
+          <select
+            class="form-control"
+            name="select"
+            [(ngModel)]="user.document_type"
+          >
+            <option value="1">CC</option>
+            <option value="2">TI</option>
+          </select>
+        </div>
+        <div class="col">
+          <label class="titleForm" for="rda">Direccion</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="calle 1 "
+            id="modelo"
+            required
+            [(ngModel)]="user.address"
+            name="rda"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label class="titleForm" for="required">Correo</label>
+
+          <input
+            type="email"
+            placeholder="lucas@ejemplo.com"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="user.email"
+            name="required"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="type">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="modelo"
+            placeholder="Cristian"
+            required
+            [(ngModel)]="user.first_name"
+            name="type"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="tui">Apellido</label>
+          <input
+            type="text"
+            placeholder="Sanchez"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="user.last_name"
+            name="tui"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label class="titleForm" for="tui">Localidad</label>
+          <input
+            type="text"
+            placeholder="Santafe"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="user.neighbourhood"
+            name="tui"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="tui">Contraseña</label>
+          <input
+            type="text"
+            placeholder="***************"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="user.password"
+            name="tui"
+          />
+        </div>
+        <div class="col">
+          <label class="titleForm" for="tui">Celular</label>
+          <input
+            type="text"
+            placeholder="123456890"
+            class="form-control"
+            id="modelo"
+            required
+            [(ngModel)]="user.phone_number"
+            name="tui"
+          />
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <button
+      (click)="saveUser()"
+      [disabled]="!myForm.form.valid"
+      class="btn btn_add"
+    >
+      Guardar
+    </button>
+    <button (click)="vover()" class="btn btn_secondary">Volver</button>
+  </div>
+  <div *ngIf="submitted">
+    <h4 class="title-dos">Registro existoso!</h4>
+    <a href="/login">Volver al login </a>
+  </div>
+
+  {{ msgError }}
+</form>
