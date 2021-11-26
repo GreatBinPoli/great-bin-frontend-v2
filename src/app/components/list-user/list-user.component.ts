@@ -10,6 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class ListUserComponent implements OnInit {
   userSet!: User[];
+  searchTerm!: string;
   constructor(private userService: UserService) {
     this.getUsers();
   }
@@ -34,17 +35,14 @@ export class ListUserComponent implements OnInit {
     this.userService.delete(documento).subscribe(
       (data) => {
         this.refreshList();
-        alert(
-          'El usuario con numero de documento' +
-            documento +
-            'fue eliminado con exito'
-        );
+        console.log(data);
       },
       (error) => {
         console.log(error);
       }
     );
   }
+
   refreshList(): void {
     this.getUsers();
   }

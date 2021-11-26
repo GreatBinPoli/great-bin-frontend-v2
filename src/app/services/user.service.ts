@@ -26,4 +26,7 @@ export class UserService {
   get(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/uno/${id}`);
   }
+  buscaremail(email: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/email/${email}`);
+  }
 }

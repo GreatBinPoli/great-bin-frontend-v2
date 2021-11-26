@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class EditUserComponent implements OnInit {
   user!: String;
-  documento: number = 111111;
+  email: any;
   currentUser: any;
   submitted = false;
   msgError = '';
@@ -20,7 +20,8 @@ export class EditUserComponent implements OnInit {
     this.retriUser();
   }
   retriUser(): void {
-    this.userService.get(this.documento).subscribe(
+    this.email = sessionStorage.getItem('key');
+    this.userService.buscaremail(this.email).subscribe(
       (data) => {
         this.currentUser = data;
         this.submitted = true;
@@ -38,7 +39,7 @@ export class EditUserComponent implements OnInit {
       .update(this.currentUser.document_id, this.currentUser)
       .subscribe(
         (data) => {
-          alert("datos actualizados corectamente")
+          alert('datos actualizados corectamente');
           this.router.navigate(['/home']);
         },
         (error) => {
