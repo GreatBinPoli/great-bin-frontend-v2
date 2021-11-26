@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  @Output() nombre = new EventEmitter<string>();
+  @Output() emailuser = new EventEmitter<string>();
   username!: string;
   password!: string;
   errorMessage = 'Invalid Credentials';
@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
           this.loginSuccess = true;
           this.apps.isLoggedIn = true;
           this.successMessage = 'Login Successful.';
+          sessionStorage.setItem('key', this.username);
           this.router.navigate(['/home']);
-          this.nombre.emit(this.username);
         },
         () => {
           this.invalidLogin = true;

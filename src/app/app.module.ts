@@ -15,6 +15,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ListFilterPipe } from './services/listerfilter.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     EditUserComponent,
     HomeComponent,
     LogoutComponent,
+    ListFilterPipe
   ],
   imports: [
     BrowserModule,
