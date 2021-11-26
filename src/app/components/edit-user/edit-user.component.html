@@ -4,7 +4,7 @@
     <div *ngIf="submitted">
       <div class="form-row">
         <div class="col">
-          <label class="titleForm" for="name">Documento</label>
+          <label class="titleForm" for="Documento">Documento</label>
           <input
             type="number"
             class="form-control"
@@ -12,11 +12,11 @@
             placeholder="0000000000000000"
             required
             [(ngModel)]="currentUser.document_id"
-            name="marca"
+            name="Documento"
           />
         </div>
         <div class="col">
-          <label class="titleForm" for="wiki">Tipo Documento</label>
+          <label class="titleForm" for="Tipo">Tipo Documento</label>
           <select
             class="form-control"
             name="select"
@@ -24,10 +24,11 @@
           >
             <option value="1">CC</option>
             <option value="2">TI</option>
+            <option value="3">CE</option>
           </select>
         </div>
         <div class="col">
-          <label class="titleForm" for="rda">Direccion</label>
+          <label class="titleForm" for="Direccion">Direccion</label>
           <input
             type="text"
             class="form-control"
@@ -35,13 +36,13 @@
             id="modelo"
             required
             [(ngModel)]="currentUser.address"
-            name="rda"
+            name="Direccion"
           />
         </div>
       </div>
       <div class="form-row">
         <div class="col">
-          <label class="titleForm" for="required">Correo</label>
+          <label class="titleForm" for="Correo">Correo</label>
 
           <input
             type="email"
@@ -50,11 +51,11 @@
             id="modelo"
             required
             [(ngModel)]="currentUser.email"
-            name="required"
+            name="Correo"
           />
         </div>
         <div class="col">
-          <label class="titleForm" for="type">Nombre</label>
+          <label class="titleForm" for="Nombre">Nombre</label>
           <input
             type="text"
             class="form-control"
@@ -62,25 +63,25 @@
             placeholder="Cristian"
             required
             [(ngModel)]="currentUser.first_name"
-            name="type"
+            name="Nombre"
           />
         </div>
         <div class="col">
-          <label class="titleForm" for="tui">Apellido</label>
+          <label class="titleForm" for="Apellido">Apellido</label>
           <input
-            type="text"
-            placeholder="Sanchez"
+            type="text"            
             class="form-control"
             id="modelo"
+            placeholder="Sanchez"
             required
             [(ngModel)]="currentUser.last_name"
-            name="tui"
+            name="Apellido"
           />
         </div>
       </div>
       <div class="form-row">
         <div class="col">
-          <label class="titleForm" for="tui">Localidad</label>
+          <label class="titleForm" for="Localidad">Localidad</label>
           <input
             type="text"
             placeholder="Santafe"
@@ -88,11 +89,11 @@
             id="modelo"
             required
             [(ngModel)]="currentUser.neighbourhood"
-            name="tui"
+            name="Localidad"
           />
         </div>
         <div class="col">
-          <label class="titleForm" for="tui">Contraseña</label>
+          <label class="titleForm" for="Contraseña">Contraseña</label>
           <input
             type="password"
             placeholder="***************"
@@ -100,11 +101,11 @@
             id="modelo"
             required
             [(ngModel)]="currentUser.password"
-            name="tui"
+            name="Contraseña"
           />
         </div>
         <div class="col">
-          <label class="titleForm" for="tui">Celular</label>
+          <label class="titleForm" for="Celular">Celular</label>
           <input
             type="text"
             placeholder="123456890"
@@ -112,7 +113,7 @@
             id="modelo"
             required
             [(ngModel)]="currentUser.phone_number"
-            name="tui"
+            name="Celular"
           />
         </div>
       </div>

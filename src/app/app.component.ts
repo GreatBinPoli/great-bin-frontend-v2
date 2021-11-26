@@ -8,10 +8,10 @@ import { AuthenticationService } from 'src/app/services/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  Email: string = 'cfsanchez1107@gmail.com';
   title = 'great-bin-frontend2';
   isLoggedIn = false;
   visible = false;
+  correo!:string;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +22,7 @@ export class AppComponent {
   ngOnInit() {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
     console.log('ngOnInit ->' + this.isLoggedIn);
+    this.correo='pollo@gmail.com'
   }
 
   handleLogout() {
