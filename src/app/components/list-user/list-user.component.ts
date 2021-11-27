@@ -12,18 +12,18 @@ export class ListUserComponent implements OnInit {
   userSet!: User[];
   searchTerm!: string;
   constructor(private userService: UserService) {
-    this.getUsers();
+    this.getUser();
   }
 
   ngOnInit(): void {
     this.refreshList();
   }
 
-  getUsers() {
+  getUser() {
     this.userService.getAll().subscribe(
       (data) => {
         this.userSet = data;
-        // console.log('otra cosa que quiero saber', data);
+        console.log('otra cosa que quiero saber', data);
       },
       (error) => {
         console.log(error);
@@ -34,6 +34,7 @@ export class ListUserComponent implements OnInit {
   deleteUser(documento: number): void {
     this.userService.delete(documento).subscribe(
       (data) => {
+        alert("El usuario con documeto "+documento+" fue eliminado con exito")
         this.refreshList();
         console.log(data);
       },
@@ -44,6 +45,6 @@ export class ListUserComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.getUsers();
+    this.getUser();
   }
 }
