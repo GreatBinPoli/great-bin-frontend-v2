@@ -16,6 +16,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ListFilterPipe } from './services/listerfilter.service';
+import { ListBagComponent } from './components/list-bag/list-bag.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListFilterPipe } from './services/listerfilter.service';
     EditUserComponent,
     HomeComponent,
     LogoutComponent,
-    ListFilterPipe
+    ListFilterPipe,
+    ListBagComponent
   ],
   imports: [
     BrowserModule,

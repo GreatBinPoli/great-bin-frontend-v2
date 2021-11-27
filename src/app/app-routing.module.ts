@@ -6,6 +6,7 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ListBagComponent } from './components/list-bag/list-bag.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'listUser', component: ListUserComponent },
   { path: 'addUser', component: AddUserComponent },
   { path: 'edidPerfil', component: EditUserComponent },
+  { path: 'bag', component: ListBagComponent },
 ];
 
 @NgModule({

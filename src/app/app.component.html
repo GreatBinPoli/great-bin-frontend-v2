@@ -9,6 +9,11 @@
           >Lista Usuario</a
         >
       </li>
+      <li class="">
+        <a *ngIf="isLoggedIn" routerLink="bag" class="nav-link"
+          >Basuras</a
+        >
+      </li>
     </ul>
   </div>
   <div *ngIf="isLoggedIn" class="menuContainer" (click)="abrirmenu()">

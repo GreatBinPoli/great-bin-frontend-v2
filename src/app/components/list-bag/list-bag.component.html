@@ -1,0 +1,114 @@
+<button class="btn btn_add" (click)="triggerModals(modalData)">
+  AGREGAR BASURA
+</button>
+
+<button class="btn btn_add-s" (click)="triggerModal(modalSMS)">MENSAJE</button>
+
+<ng-template #modalSMS let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title titleTable" id="modal-basic-sms">SMS</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="width: 300px; margin: auto">
+      <div class="submit-form">
+        <div class="col">
+          <label class="titleForm" for="wiki">Enviar SMS</label>
+          <div>
+            <textarea name="" id="" cols="30" rows="5"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="enviar()"
+            (click)="modal.close('Save click')"
+          >
+            ENVIAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title titleTable" id="modal-basic-title">AGREGAR</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="width: 400px; margin: auto">
+      <div class="submit-form">
+        <div class="col">
+          <label class="titleForm" for="wiki">Tipo Basura</label>
+          <select class="form-control" name="select" [(ngModel)]="bag.type">
+            <option value="GREEN">GREEN</option>
+            <option value="WHITE">WHITE</option>
+            <option value="BLACK">BLACK</option>
+            <option value="RED">RED</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="saveBag()"
+            (click)="modal.close('Save click')"
+          >
+            AGREGAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="buscarAutos">
+  <div class="r">
+    <label *ngIf="!currentBag"
+      ><span class="tituloDeAutos">{{ msgError }}</span></label
+    >
+    <div class="card" *ngIf="currentBag">
+      <div class="card-body">
+        <h5 class="card-title titleTable">Detallado Basura</h5>
+
+        <label><span class="tituloDeAutos">Nombre:</span> Hola</label>
+
+        <label><span class="tituloDeAutos">Descripcion:</span> hola 2</label>
+
+        <label><span class="tituloDeAutos">Reciclaje:</span> hola 3</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="listContainer scroll">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let id of bagSet; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveBag(id, i)"
+      >
+        <div>{{ id.type }}</div>
+      </li>
+    </ul>
+  </div>
+</div>

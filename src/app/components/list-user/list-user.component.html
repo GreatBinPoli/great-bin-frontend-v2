@@ -31,7 +31,6 @@
           <th class="titles_table">Celular</th>
           <th class="titles_table">Dirección</th>
           <th class="titles_table">Localidad</th>
-          <th class="titles_table">Basura</th>
           <th class="titles_table">Accion</th>
         </tr>
       </thead>
@@ -44,7 +43,6 @@
           <td>{{ item.phone_number }}</td>
           <td>{{ item.address }}</td>
           <td>{{ item.neighbourhood }}</td>
-          <td>{{ item.bags }}</td>
           <td>
             <button class="btn btn-sm" (click)="deleteUser(item.document_id)">
               <img
