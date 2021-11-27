@@ -77,7 +77,89 @@
         (click)="setActiveBag(id, i)"
       >
         <div>{{ id.type }}</div>
+        <div>
+          <button class="btn btn_se" (click)="triggerModal(modalDes)">
+            AGREGAR Desperdicio
+          </button>
+        </div>
       </li>
     </ul>
   </div>
 </div>
+
+<ng-template #modalDes let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title titleTable" id="modal-basic-re">Desperdicio</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="width: 400px; margin: auto">
+      <div class="submit-form">
+        <div class="col">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              required
+              [(ngModel)]="water.name"
+              name="marca"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Descripcion</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              required
+              [(ngModel)]="water.description"
+              name="marca"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Codigo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              required
+              [(ngModel)]="recycling.code"
+              name="marca"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Resiclable?</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              required
+              [(ngModel)]="recycling.recycling"
+              name="marca"
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="wastersave()"
+            (click)="modal.close('Save click')"
+          >
+            AGREGAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

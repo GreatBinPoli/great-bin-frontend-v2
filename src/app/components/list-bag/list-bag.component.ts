@@ -7,7 +7,7 @@ import { BagService } from '../../services/bag.service';
 import { SMSService } from '../../services/sms.service';
 import { WasteService } from '../../services/waste.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Waste } from 'src/app/model/waste';
+import { Waste, Recycling } from 'src/app/model/waste';
 
 @Component({
   selector: 'app-list-bag',
@@ -18,6 +18,8 @@ export class ListBagComponent implements OnInit {
   user = new User();
   bag = new Bag();
   sms = new SMS();
+  recycling = new Recycling();
+  water = new Waste();
   bagSet!: Bag[];
   waterSet!: Waste[];
 
@@ -47,6 +49,18 @@ export class ListBagComponent implements OnInit {
   triggerModals(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (res) => {
+          this.closeModal = `Closed with: ${res}`;
+        },
+        (res) => {
+          this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+        }
+      );
+  }
+  triggerModal(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-re' })
       .result.then(
         (res) => {
           this.closeModal = `Closed with: ${res}`;
@@ -124,18 +138,20 @@ export class ListBagComponent implements OnInit {
     this.currentBag = bag;
     this.currentIndex = index;
 
-    this.wasteService.getAll(this.currentUser.document_id,this.currentIndex).subscribe(
-      (data) => {
-        this.waterSet = data;
+    this.wasteService
+      .getAll(this.currentUser.document_id, this.currentIndex)
+      .subscribe(
+        (data) => {
+          this.waterSet = data;
 
-
-        console.log('otra cosa que quiero saber', data);
-        console.log('jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',this.waterSet);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+          console.log('otra cosa que quiero saber', data);
+          console.log('jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', this.waterSet);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      
     this.refreshList();
   }
   refreshList(): void {
@@ -144,8 +160,31 @@ export class ListBagComponent implements OnInit {
 
   mostrar() {
     this.getBag();
-    this.wasterget();
+    this.wastersave();
+  }
+   wastersave(): void {
+    const data = {
+      name: this.water.name,
+      description: this.water.description,
+      Recycling: {
+        code: this.recycling.code,
+        recycling: this.recycling.recycling,
+      },
+    };
+
+    this.wasteService
+      .create(data, this.currentUser.document_id, 1)
+      .subscribe(
+        (data) => {
+          this.submitted = true;
+          console.log(data);
+        },
+        (error) => {
+          this.msgError = error.message + ' \n ' + error.error.message;
+          console.log(error);
+        }
+      );
   }
 
-  wasterget(): void {}
+ 
 }
