@@ -19,12 +19,15 @@ export class ListBagComponent implements OnInit {
   closeModal!: string;
   currentBag: any;
   currentIndex = -1;
+  email: any;
+  documento = 11111;
+  currentUser!: User;
   constructor(
     private userService: UserService,
     private bagService: BagService,
     private modalService: NgbModal
   ) {
-    this.getBag();
+    this.retriUser();
   }
 
   ngOnInit(): void {
@@ -64,11 +67,26 @@ export class ListBagComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  retriUser(): void {
+    this.email = sessionStorage.getItem('key');
+    this.userService.buscaremail(this.email).subscribe(
+      (data) => {
+        this.currentUser = data;
+        this.submitted = true;
+        console.log(data);
+      },
+      (error) => {
+        this.msgError = error.message + ' \n ' + error.error.message;
+        console.log(error);
+      }
+    );
+  }
   saveBag(): void {
     const data = {
       type: this.bag.type,
     };
-    this.bagService.create(data, 3333333).subscribe(
+
+    this.bagService.create(data, this.currentUser.document_id).subscribe(
       (data) => {
         this.submitted = true;
         console.log(data);
@@ -79,8 +97,9 @@ export class ListBagComponent implements OnInit {
       }
     );
   }
+
   getBag() {
-    this.bagService.getAll(3333333).subscribe(
+    this.bagService.getAll(this.currentUser.document_id).subscribe(
       (data) => {
         this.bagSet = data;
         console.log('otra cosa que quiero saber', data);
@@ -99,4 +118,7 @@ export class ListBagComponent implements OnInit {
     this.getBag();
   }
   enviar() {}
+  mostrar() {
+    this.getBag();
+  }
 }

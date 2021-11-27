@@ -10,14 +10,12 @@
         >
       </li>
       <li class="">
-        <a *ngIf="isLoggedIn" routerLink="bag" class="nav-link"
-          >Basuras</a
-        >
+        <a *ngIf="isLoggedIn" routerLink="bag" class="nav-link">Basuras</a>
       </li>
     </ul>
   </div>
   <div *ngIf="isLoggedIn" class="menuContainer" (click)="abrirmenu()">
-    <span>{{ correo }}</span>
+    <h5>Perfil</h5>
     <img src="../assets/Path.svg" alt="flecha abajo" />
     <div *ngIf="visible" class="Menu">
       <ul>
