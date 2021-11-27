@@ -2,45 +2,7 @@
   AGREGAR BASURA
 </button>
 
-<button class="btn btn_add-s" (click)="triggerModal(modalSMS)">MENSAJE</button>
 <button class="btn btn_add-s" (click)="mostrar()">Mostrar basuras</button>
-
-<ng-template #modalSMS let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title titleTable" id="modal-basic-sms">SMS</h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div style="width: 300px; margin: auto">
-      <div class="submit-form">
-        <div class="col">
-          <label class="titleForm" for="wiki">Enviar SMS</label>
-          <div>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-info"
-            (click)="enviar()"
-            (click)="modal.close('Save click')"
-          >
-            ENVIAR
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
 
 <ng-template #modalData let-modal>
   <div class="modal-header">
@@ -89,13 +51,19 @@
     >
     <div class="card" *ngIf="currentBag">
       <div class="card-body">
-        <h5 class="card-title titleTable">Detallado Basura</h5>
+        <h5 class="card-title titleTable">Detallado Basura/Residuos</h5>
+        <div *ngFor="let id of waterSet; let i = index">
+          <label><span class="tituloDeAutos">Nombre:</span>{{ id.name }}</label>
+          <label
+            ><span class="tituloDeAutos">Descripcion:</span>
+            {{ id.description }}</label
+          >
 
-        <label><span class="tituloDeAutos">Nombre:</span> Hola</label>
-
-        <label><span class="tituloDeAutos">Descripcion:</span> hola 2</label>
-
-        <label><span class="tituloDeAutos">Reciclaje:</span> hola 3</label>
+          <label
+            ><span class="tituloDeAutos">Reciclaje:</span>
+            {{ id.Recycling.recycling }}</label
+          >
+        </div>
       </div>
     </div>
   </div>

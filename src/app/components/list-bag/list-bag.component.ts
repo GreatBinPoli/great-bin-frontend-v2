@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
 import { Bag } from '../../model/bag';
+import { SMS } from '../../model/sms';
 import { UserService } from '../../services/user.service';
 import { BagService } from '../../services/bag.service';
+import { SMSService } from '../../services/sms.service';
+import { WasteService } from '../../services/waste.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Waste } from 'src/app/model/waste';
 
 @Component({
   selector: 'app-list-bag',
@@ -13,11 +17,15 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ListBagComponent implements OnInit {
   user = new User();
   bag = new Bag();
+  sms = new SMS();
   bagSet!: Bag[];
+  waterSet!: Waste[];
+
   submitted = false;
   msgError = '';
   closeModal!: string;
   currentBag: any;
+  currentwaster: any;
   currentIndex = -1;
   email: any;
   documento = 11111;
@@ -25,6 +33,8 @@ export class ListBagComponent implements OnInit {
   constructor(
     private userService: UserService,
     private bagService: BagService,
+    private sMSService: SMSService,
+    private wasteService: WasteService,
     private modalService: NgbModal
   ) {
     this.retriUser();
@@ -46,18 +56,7 @@ export class ListBagComponent implements OnInit {
         }
       );
   }
-  triggerModal(ID: any) {
-    this.modalService
-      .open(ID, { ariaLabelledBy: 'modal-basic-sms' })
-      .result.then(
-        (res) => {
-          this.closeModal = `Closed with: ${res}`;
-        },
-        (res) => {
-          this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-        }
-      );
-  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -90,6 +89,18 @@ export class ListBagComponent implements OnInit {
       (data) => {
         this.submitted = true;
         console.log(data);
+        const data2 = {
+          phone_number: '+57' + this.currentUser.phone_number,
+          body:
+            ' Hola ' +
+            this.currentUser.first_name +
+            ', has agregado una nueva basura de tipo ' +
+            this.bag.type +
+            ' Recuerda que el día del recolección es los viernes.',
+        };
+        this.sMSService.EnviarSMS(data2).subscribe((data) => {
+          console.log(data);
+        });
       },
       (error) => {
         this.msgError = error.message + ' \n ' + error.error.message;
@@ -112,13 +123,29 @@ export class ListBagComponent implements OnInit {
   setActiveBag(bag: Bag, index: number): void {
     this.currentBag = bag;
     this.currentIndex = index;
+
+    this.wasteService.getAll(this.currentUser.document_id,this.currentIndex).subscribe(
+      (data) => {
+        this.waterSet = data;
+
+
+        console.log('otra cosa que quiero saber', data);
+        console.log('jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',this.waterSet);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     this.refreshList();
   }
   refreshList(): void {
     this.getBag();
   }
-  enviar() {}
+
   mostrar() {
     this.getBag();
+    this.wasterget();
   }
+
+  wasterget(): void {}
 }
